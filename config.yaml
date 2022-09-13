@@ -1,5 +1,6 @@
-ipAddress: "https://192.168.51.19:5000/"
-baseAPIRoute: "eMosaicREST/"
+baseAPIRoute: "https://192.168.51.19:5000/eMosaicREST/"
+username: "USU"
+password: "eMosaic-usu"
 urls:
   setUcSession: "site/SetUCsessions/"
   getChargeSessions: "site/GetChargeSessions/"
