@@ -15,6 +15,23 @@ common_url = config['baseAPIRoute']
 def invalid_response(errMsg):
   return JsonResponse({'error': errMsg})
 
+def set_uc_session(request):
+  if request.method != "POST":
+    return invalid_response("Invalid Method")
+  
+  body_unicode = request.body.decode('utf-8')
+  body = json.loads(body_unicode)
+
+  url = common_url + config['urls']['setUcSession']
+
+  headers = {'content-type': 'application/json', 'Accept': 'application/json'}
+
+  response = requests.post(url, headers=headers, data=json.dumps(body), auth=(config["username"], config['password']), verify='client.pem')
+
+  print(response.text)
+
+  return JsonResponse(json.loads(response.text))
+
 def get_price(request):
   if request.method != "GET":
     return invalid_response("Invalid Method")
